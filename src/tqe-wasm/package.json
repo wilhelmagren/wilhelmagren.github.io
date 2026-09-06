@@ -1,0 +1,15 @@
+{
+  "name": "tqe",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "tqe_bg.wasm",
+    "tqe.js",
+    "tqe.d.ts"
+  ],
+  "main": "tqe.js",
+  "types": "tqe.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
