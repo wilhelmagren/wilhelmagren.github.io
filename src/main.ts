@@ -24,14 +24,18 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
         </div>
 
         <textarea id="query" spellcheck="false">
-df
-  .filter(col("station_name").eq(lit("Hualien")))
-  .group_by(vec![col("station_name")])
-  .agg(vec![
-    min(col("measurement")),
-    max(col("measurement")),
-    sum(col("measurement")),
-  ])
+df = ctx.parquet_bytes(
+        "weather_stations",
+        Bytes::copy_from_slice(parquet),
+    )
+    .agg(
+          vec![col("station_name")],
+          vec![
+              min(col("measurement")),
+              max(col("measurement")),
+              avg(col("measurement")),
+          ],
+    )
         </textarea>
       </div>
 
